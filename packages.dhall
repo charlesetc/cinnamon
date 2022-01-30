@@ -98,7 +98,74 @@ in  upstream
       }
 -------------------------------
 -}
-let upstream =
-      https://github.com/purescript/package-sets/releases/download/psc-0.14.4-20211109/packages.dhall sha256:e8d8d5b339f6d46d950da90037c6c38e8809f7e34f727373089ab82c080fc709
 
-in  upstream
+let halogen-renderless =
+      { dependencies = [ "prelude", "control" ]
+      , repo =
+          "https://github.com/purescript-deprecated/purescript-halogen-renderless"
+      , version = "v0.0.4"
+      }
+
+let html-parser-halogen =
+      { dependencies = [ "string-parsers", "halogen" ]
+      , repo = "https://github.com/rnons/purescript-html-parser-halogen.git"
+      , version = "v1.0.0-rc.2"
+      }
+
+let svg-parser =
+      { dependencies = [ "prelude", "string-parsers" ]
+      , repo = "https://github.com/citizennet/purescript-svg-parser.git"
+      , version = "v2.0.0"
+      }
+
+let svg-parser-halogen =
+      { dependencies = [ "svg-parser", "halogen" ]
+      , repo = "https://github.com/rnons/purescript-svg-parser-halogen.git"
+      , version = "v2.0.0-rc.1"
+      }
+
+
+let ocelot =
+      { dependencies =
+          [ "aff-promise"
+          , "affjax"
+          , "argonaut"
+          , "bigints"
+          , "console"
+          , "debug"
+          , "effect"
+          , "email-validate"
+          , "formatters"
+          , "fuzzy"
+          , "halogen"
+          , "halogen-renderless"
+          , "halogen-svg-elems"
+          , "halogen-select"
+          , "halogen-storybook"
+          , "html-parser-halogen"
+          , "js-timers"
+          , "numbers"
+          , "psci-support"
+          , "read"
+          , "remotedata"
+          , "svg-parser"
+          , "svg-parser-halogen"
+          , "test-unit"
+          , "variant"
+          ]
+      , repo = "https://github.com/citizennet/purescript-ocelot"
+      , version = "v0.33.0"
+      }
+
+let additions = 
+      { halogen-renderless
+      , html-parser-halogen
+      , ocelot
+      , svg-parser
+      , svg-parser-halogen
+      }
+
+let upstream =
+      https://github.com/purescript/package-sets/releases/download/psc-0.14.4-20210905/packages.dhall sha256:140f3630801f2b02d5f3a405d4872e0af317e4ef187016a6b00f97d59d6275c6
+
+in  (upstream // additions)

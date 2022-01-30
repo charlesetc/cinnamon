@@ -1,0 +1,21 @@
+{
+  "name": "cinnamon",
+  "version": "1.0.0",
+  "scripts": {
+    "postinstall": "spago install",
+    "build": "spago build",
+    "test": "spago test",
+    "bundle": "spago bundle-app  --to dist/app.js",
+    "serve": "http-server -p 3000 ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlesetc/cinnamon.git"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.0",
+    "purescript": "0.14.4",
+    "purescript-psa": "0.8.2",
+    "spago": "0.20.3"
+  }
+}
